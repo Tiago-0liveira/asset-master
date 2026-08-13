@@ -8,7 +8,10 @@
       "format": "svg",
       "attributes": {
         "dimensions": "100x100",
-        "tags": ["navigation", "direction"]
+        "tags": [
+          "navigation",
+          "direction"
+        ]
       },
       "dateCreated": "2026-08-13T09:00:00.000Z",
       "dateModified": "2026-08-13T09:00:00.000Z"
@@ -21,23 +24,13 @@
       "format": "svg",
       "attributes": {
         "dimensions": "100x100",
-        "tags": ["profile", "account"]
+        "tags": [
+          "profile",
+          "account"
+        ]
       },
       "dateCreated": "2026-08-13T09:05:00.000Z",
       "dateModified": "2026-08-13T09:05:00.000Z"
-    },
-    {
-      "id": "button-primary",
-      "name": "Button Primary",
-      "filename": "button-primary.svg",
-      "category": "ui-component",
-      "format": "svg",
-      "attributes": {
-        "dimensions": "100x100",
-        "tags": ["control", "action"]
-      },
-      "dateCreated": "2026-08-13T09:10:00.000Z",
-      "dateModified": "2026-08-13T09:10:00.000Z"
     },
     {
       "id": "card-placeholder",
@@ -47,7 +40,10 @@
       "format": "svg",
       "attributes": {
         "dimensions": "100x100",
-        "tags": ["container", "layout"]
+        "tags": [
+          "container",
+          "layout"
+        ]
       },
       "dateCreated": "2026-08-13T09:15:00.000Z",
       "dateModified": "2026-08-13T09:15:00.000Z"
