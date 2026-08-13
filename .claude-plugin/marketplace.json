@@ -1,0 +1,13 @@
+{
+  "name": "asset-master",
+  "owner": {
+    "name": "Tiago Oliveira"
+  },
+  "plugins": [
+    {
+      "name": "asset-master",
+      "source": "./",
+      "description": "Universal asset studio — /asset-master:start boots the API + web UI; /asset-master:draft, :tweak, and :integrate create, edit, and wire assets into any codebase."
+    }
+  ]
+}

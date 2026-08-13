@@ -1,0 +1,10 @@
+{
+  "name": "asset-master",
+  "version": "1.0.0",
+  "description": "Universal, project-agnostic asset studio: draft, tweak, and integrate assets (icons, sprites, UI components, backgrounds, illustrations) into ANY codebase, backed by an Express registry API and a React gallery.",
+  "author": {
+    "name": "Tiago Oliveira"
+  },
+  "homepage": "https://github.com/Tiago-0liveira/asset-master",
+  "keywords": ["assets", "svg", "icons", "design-system", "studio"]
+}

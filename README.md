@@ -4,11 +4,12 @@ Universal, project-agnostic asset studio. Create, manage, and integrate visual
 assets (icons, sprites, UI components, backgrounds, illustrations) into **any**
 codebase — web, games, mobile, design systems, CLI tools.
 
-It ships as three things working together:
+It ships as a **Claude Code plugin** bundling three things:
 
-1. **An AI skill** (`SKILL.md`) — Claude Code slash commands that draft, tweak,
-   and wire assets into a host project. Nothing is hardcoded to a domain; rules
-   are derived from the host project at runtime.
+1. **Commands + a skill** — `/asset-master:start`, `:draft`, `:tweak`,
+   `:integrate`, backed by the `asset-master` skill (`skills/asset-master/`).
+   Nothing is hardcoded to a domain; rules are derived from the host project at
+   runtime.
 2. **An Express backend** (`server.js`) — a small JSON-registry API on port
    `3001`.
 3. **A React + Vite frontend** (`src/`) — a browsable asset gallery on port
@@ -56,7 +57,34 @@ origin in development.
 
 ---
 
-## Getting started
+## Install as a Claude Code plugin
+
+Add this repo as a marketplace, then install the plugin:
+
+```
+/plugin marketplace add Tiago-0liveira/asset-master
+/plugin install asset-master@asset-master
+```
+
+Then, inside any project:
+
+```
+/asset-master:start          # install deps, boot API + web, open the UI
+/asset-master:draft   [Name] [Description]
+/asset-master:tweak   [Filename] [Feedback]
+/asset-master:integrate [Filename]
+```
+
+`/asset-master:start` runs `npm i && npm start` **in the plugin directory**
+(`${CLAUDE_PLUGIN_ROOT}`), waits for `:3005`, and opens the UI. The asset catalog
+lives with the plugin; `:integrate` targets the host project you're working in.
+
+> Plugins always namespace commands by plugin name — there is no bare
+> `/asset-master`; the entrypoint is `/asset-master:start`.
+
+## Run standalone (development)
+
+Clone the repo and run the servers directly:
 
 ```bash
 npm install
@@ -130,10 +158,10 @@ Categories are **read dynamically** from this file — never hardcoded.
 
 ---
 
-## The AI skill
+## The plugin commands
 
-`SKILL.md` defines the Claude Code commands. All paths are relative to the
-project root.
+`commands/*.md` define the slash commands; `skills/asset-master/SKILL.md` holds
+the shared workflow they follow.
 
 ### First run (mandatory)
 
@@ -145,14 +173,16 @@ determined for certain, it **asks you** — it never assumes.
 
 ### Commands
 
-- **`/draft [Asset Name] [Description]`** — read `THEME_RULE.md`, pick the
-  category dynamically from the registry, write the asset to `assets/`, and
-  register it (prefers `POST /api/assets/register` when the server runs).
-- **`/tweak [Filename] [Feedback]`** — modify an existing asset within the theme
-  constraints and bump `dateModified`.
-- **`/integrate [Filename]`** — read `INTEGRATION_RULE.md` and, if the three
-  steps (destination folder, registry file, component) are explicit, integrate
-  seamlessly; otherwise stop and ask.
+- **`/asset-master:start`** — install deps, boot the API + web servers, open the
+  UI. The entrypoint.
+- **`/asset-master:draft [Asset Name] [Description]`** — read `THEME_RULE.md`,
+  pick the category dynamically from the registry, write the asset to `assets/`,
+  and register it (prefers `POST /api/assets/register` when the server runs).
+- **`/asset-master:tweak [Filename] [Feedback]`** — modify an existing asset
+  within the theme constraints and bump `dateModified`.
+- **`/asset-master:integrate [Filename]`** — read `INTEGRATION_RULE.md` and, if
+  the three steps (destination folder, registry file, component) are explicit,
+  integrate seamlessly; otherwise stop and ask.
 
 ### Guardrails
 
