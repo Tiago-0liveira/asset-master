@@ -1,0 +1,24 @@
+{
+  "name": "asset-master",
+  "version": "1.0.0",
+  "description": "asset-master: universal, project-agnostic asset creation, management, and integration studio. React+Vite frontend, Express backend, JSON asset registry, and an AI skill for automated asset drafting and integration into ANY codebase.",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "concurrently -n API,WEB -c cyan,green \"npm run server\" \"npm run dev\"",
+    "server": "node --watch server.js",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview --port 3005"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.1",
+    "concurrently": "^8.2.2",
+    "vite": "^5.4.0"
+  }
+}
